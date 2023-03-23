@@ -1,0 +1,57 @@
+1) Defanging an IP Address
+
+class Solution:
+    def defangIPaddr(self, address: str) -> str:
+        s = ''
+        for i in address:
+            if i == '.': s+='[.]'
+            else: s+=i
+        return s
+
+2)  Find Numbers with Even Number of Digits
+
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        return len([x for x in nums if len(str(x)) % 2 == 0])
+
+3) Number of Good Pairs
+
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        pairs = 0
+        for i, left in enumerate(nums):
+            j = i + 1
+            while j < len(nums):
+                right = nums[j]
+                if left == right:
+                    pairs += 1
+                j += 1
+        return pairs
+
+4) How Many Numbers Are Smaller Than the Current Number
+
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        return [sorted(nums).index(i) for i in nums]
+
+5)  Subtract the Product and Sum of Digits of an Integer
+
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        list1 = [int(i) for i in str(n)]
+        product = 1
+        sum1 = 0
+        for i in list1:
+            product *= i
+            sum1 += i
+        return product-sum1
+
+6) XOR Operation in an Array
+
+class Solution:
+    def xorOperation(self, n: int, start: int) -> int:
+        ans = 0
+        for i in range(n):
+            ans ^= start
+            start+=2
+        return ans
