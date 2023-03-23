@@ -1,0 +1,130 @@
+1) Detecting Floating Point Number
+
+import re
+
+T = int(input())
+
+for _ in range(T):
+    N = input()
+    if re.match(r"^[+-]?[0-9]*\.[0-9]+$", N):
+        print(True)
+    else:
+        print(False)
+
+
+2) Re.split()
+
+regex_pattern = r"[\b\W\b]+"    # Do not delete 'r'.
+
+import re
+print("\n".join(re.split(regex_pattern, input())))
+
+
+3) Group(), Groups() & Groupdict()
+
+import re
+char = input()
+pattern = r"([a-zA-Z0-9])\1+"
+match = re.search(pattern,char)
+if match:
+    print(match.group(1))
+else:
+    print(-1)
+
+4) Re.findall() & Re.finditer()
+
+import re
+
+pat = "(?<=[^aeiou])([aeiou]{2,})[^aeiou]"
+res = re.findall(pat, input(), flags=re.I)
+
+print('\n'.join(res or ['-1']))
+
+
+5) Re.start() & Re.end()
+
+import re
+s, k = input(), input()
+pattern = r'{}'.format('{}(?={})'.format(k[0:-1], k[-1]))
+r = re.finditer(pattern, s)
+b = True    
+
+for m in r:
+    b = False
+    print((m.start(), m.end()))
+if b:
+    print((-1, -1))
+
+
+6) Regex Substitution
+
+import re
+for i in range(int(input())):
+  print(re.sub(r"(?<=\s)\|{2}(?=\s)",'or',re.sub(r"(?<=\s)&&(?=\s)",'and',input())))
+
+
+7) Validating Roman Numerals
+
+regex_pattern = r"^(?=[MDCLXVI])M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$"	# Do not delete 'r'.
+
+import re
+print(str(bool(re.match(regex_pattern, input()))))
+
+
+8) Validating phone numbers
+
+import re
+N = int(input())
+
+for _ in range(N):
+    if re.match(r'^(7|8|9)\d{9}$', input()):
+        print('YES')
+    else: print('NO')
+
+
+9) Validating and Parsing Email Addresses
+
+import re
+
+for _ in range(int(input())):
+    user, email = input().split()
+    if re.match(r'^[a-zA-Z]+[\w\-.]*@[a-zA-Z]+\.[a-zA-Z]{1,3}$', email[1:-1]):
+        print(f'{user} {email}')
+
+
+10) Hex Color Code
+
+import re
+
+for _ in range(int(input())):
+    for i in re.findall(r'(?<=[ :,])#[0-9A-Fa-f]{3,6}', input()):
+        print(i)
+
+
+11) Validating UID
+
+import re
+n = int(input())
+patt = r'^(?=(?:.*[A-Z]){2})(?=(?:.*\d){3})(?:([a-zA-Z\d])(?!.*\1)){10}$'
+for x in range(n):
+    match=re.match(patt,str(input()))
+    if match:
+        print("Valid")
+    else:
+        print("Invalid")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
