@@ -1,0 +1,28 @@
+1) Running Sum of 1d Array
+
+class Solution(object):
+    def runningSum(self, nums):
+        output = [0] * len(nums)
+        output[0] = nums[0]
+        for i in range(1, len(nums)):
+            output[i] = output[i - 1] + nums[i]
+        return output
+
+2) Shuffle the array
+
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return list(chain(*zip(nums[:n],nums[n:])))
+
+3) Kids with greatest number of candies
+
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        maximum=max(candies)
+        out=[]
+        for i in candies:
+            if i+extraCandies>=maximum:
+                out.append(True)
+            else:
+                out.append(False)
+        return out
