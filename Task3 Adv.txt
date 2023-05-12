@@ -1,0 +1,71 @@
+1) Maximum Product of Two Elements in an Array
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        nums.sort()
+        return (nums[-2]-1)*(nums[-1]-1)
+
+2) Count Number of Teams
+
+class Solution:
+    def numTeams(self, A):
+        L = len(A)
+        result = 0
+        for j in range(1,L-1):
+            x, lo_L, lo_R, hi_L, hi_R = A[j], 0, 0, 0, 0
+            for i in range(j):
+                if A[i]<x:
+                    lo_L += 1
+                else:
+                    hi_L += 1
+            for k in range(j+1,L):
+                if A[k]<x:
+                    lo_R += 1
+                else:
+                    hi_R += 1
+            result += lo_L*hi_R + hi_L*lo_R
+        return result
+
+3) Number of Students Doing Homework at a Given Time
+
+class Solution:
+    def busyStudent(self, startTime: List[int], endTime: List[int], queryTime: int) -> int:
+        count = 0
+        for i in range(len(startTime)):
+            if queryTime <= endTime[i] and queryTime >= startTime[i]:
+                count += 1
+        return count
+
+4) Number of Steps to Reduce a Number to Zero
+
+class Solution:
+    """
+    Time:   O(log(n))
+    Memory: O(1)
+    """
+
+    def numberOfSteps(self, num: int) -> int:
+        steps = 0
+
+        while num != 0:
+            steps += 1
+            if num & 1:
+                num -= 1
+            else:
+                num >>= 1
+
+        return steps
+
+5) Counting Bits
+
+class Solution(object):
+    def countBits(self, n):
+        """
+        :type n: int
+        :rtype: List[int]
+        """
+        l=[]
+        for i in range(0,n+1):
+            s=str(bin(i))
+            l.append(s.count('1'))
+        return l
