@@ -1,0 +1,49 @@
+1) Single Number
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        once = 0
+        for i in nums:
+            once ^= i
+        return once
+
+2) Sort Integers by The Number of 1 Bits
+
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        return sorted(sorted(arr), key=lambda x: bin(x).count('1'))
+
+3) Single Number III
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> List[int]:
+        p=0
+        q=0
+        for i in nums :
+            p^=i;
+        for i in nums:
+            if ((p&(-p))&i)==0 :
+                q^=i
+        return [p^q,q];
+
+4) Subsets
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        l=[]
+        def subs(idx,tmp,lst,n,l):
+            if idx>n:
+                l.append(lst[:])
+                return 
+            lst.append(tmp[idx])
+            subs(idx+1,tmp,lst,n,l)
+            lst.pop()
+            subs(idx+1,tmp,lst,n,l)
+            return 
+        lst=[]
+        l=[]
+        n=len(nums)-1
+        subs(0,nums,lst,n,l)
+        return sorted(l)
+
+       
